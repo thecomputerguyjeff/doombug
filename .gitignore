@@ -1,0 +1,10 @@
+.gradle
+frontend/node_modules
+.idea
+*.iml
+.settings
+.classpath
+.project
+bin
+*.class
+/dist

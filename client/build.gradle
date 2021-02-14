@@ -1,0 +1,34 @@
+plugins {
+    id "com.github.node-gradle.node" version "3.0.1"
+}
+
+node {
+    version = '10.23.0'
+    download = true
+}
+
+task installDependencies(type: NpmTask) {
+    args = ['install']
+}
+
+task build(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+task test(type: NpmTask) {
+    args = ['test']
+}
+
+task start(type: YarnTask) {
+    args = ['start']
+}
+
+start.dependsOn(installDependencies);
+test.dependsOn(installDependencies);
+
+build.dependsOn(installDependencies);
+build.doFirst {
+    println "Cleaning client dist before build"
+    println "Deleting dir ${rootDir}/client/build"
+    delete "${rootDir}/client/build"
+}

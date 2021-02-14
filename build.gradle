@@ -1,0 +1,34 @@
+//apply plugin: 'base'
+
+version='0.1'
+
+// main task for preparation of build for deploy to Heroku
+// before this task it's necessary to clean everything and build server.
+// server also will build client and pack it into the jar-file
+task release(dependsOn: ':server:build') {
+    doLast {
+        def target = rootDir.getAbsolutePath() + '/dist';
+        def src = rootDir.getAbsolutePath() + '/server/build/libs/server.jar';
+        // create target dir
+        def targetDir = new File(target);
+        if (!targetDir.exists()) {
+            targetDir.mkdirs();
+        }
+        // clear target dir
+        for (File file : targetDir.listFiles()) {
+            file.delete();
+        }
+        // open source file
+        def srcFile = new File(src);
+        // move it
+        def targetFile = new File(target + '/app.jar');
+        srcFile.renameTo(targetFile);
+    }
+}
+
+// Heroku custom task, it does nothing
+task stage(dependsOn: 'release') {
+    doLast {
+        System.out.println("Done...")
+    }
+}

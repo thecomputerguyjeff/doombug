@@ -1,0 +1,4 @@
+rootProject.name = 'doombug'
+
+include 'client'
+include 'server'
