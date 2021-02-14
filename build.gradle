@@ -8,7 +8,7 @@ version='0.1'
 task release(dependsOn: ':server:build') {
     doLast {
         def target = rootDir.getAbsolutePath() + '/dist';
-        def src = rootDir.getAbsolutePath() + '/server/build/libs/server.jar';
+        def src = rootDir.getAbsolutePath() + '/server/build/libs/server-0.0.1.jar';
         // create target dir
         def targetDir = new File(target);
         if (!targetDir.exists()) {
