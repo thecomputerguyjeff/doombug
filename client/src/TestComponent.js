@@ -1,9 +1,11 @@
+import React, {useState} from 'react';
+
 const TestComponent = () => {
-    let data = '';
+    const [data, setData] = useState('');
     const getData = () => {
         fetch('/api/v1/test')
             .then(r => r.json())
-            .then(r => data = r);
+            .then(r => setData(r));
     }
     getData();
     return (
