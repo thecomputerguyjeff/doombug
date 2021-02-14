@@ -4,10 +4,9 @@ const TestComponent = () => {
     const [data, setData] = useState('');
     const getData = () => {
         fetch('/api/v1/test')
-            .then(r => {
-                console.log(r); r.json()
+            .then(r => r.json()
 
-            })
+            )
             .then(hello => {
                 console.log(hello)
                 setData(hello)
