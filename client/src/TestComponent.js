@@ -5,6 +5,7 @@ const TestComponent = () => {
             .then(r => r.json())
             .then(r => data = r);
     }
+    getData();
     return (
         <>
             {data}
