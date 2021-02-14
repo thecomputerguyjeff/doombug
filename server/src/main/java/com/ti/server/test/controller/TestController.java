@@ -11,6 +11,6 @@ public class TestController {
 
     @GetMapping
     public TestModel test() {
-        return TestModel.builder().hello("hi").build();
+        return TestModel.builder().hello("hello").build();
     }
 }
