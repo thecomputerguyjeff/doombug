@@ -25,6 +25,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/static/**", "/service-worker.js").permitAll()
+                .antMatchers("/**").permitAll() //this will need to be removed
                 .anyRequest().authenticated();
     }
 
