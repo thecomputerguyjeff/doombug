@@ -8,9 +8,9 @@ const TestComponent = () => {
                 console.log(r); r.json()
 
             })
-            .then(r => {
-                console.log(r)
-                setData(r)
+            .then(hello => {
+                console.log(hello)
+                setData(hello)
             });
     }
     getData();
