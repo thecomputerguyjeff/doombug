@@ -32,10 +32,10 @@ test {
 	useJUnitPlatform()
 }
 
-jar {
+bootJar {
 	from('../client/build') {
 		into 'static'
 	}
 }
 
-jar.dependsOn(':client:build')
+bootJar.dependsOn(':client:build')

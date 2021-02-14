@@ -1,5 +1,5 @@
 .gradle
-frontend/node_modules
+client/node_modules
 .idea
 *.iml
 .settings
