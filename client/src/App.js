@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./LoginPage";
 import SignUp from "./SignUp";
-import bug from './src/bug.jpg';
+
 function App() {
   return (<Router>
         <div className="App">
@@ -13,10 +13,7 @@ function App() {
             {/*class is applied to typical branding logo you see in the top navigation bar*/}
             <div className="container">
               <Link className="navbar-brand" to={"/sign-in"}>DoomBug</Link>
-              {/*<div>*/}
-              {/*    <img src={bug} alt="this is bug image" />*/}
-              {/*</div>*/}
-              {/*if anyone could figure out how we could add this but to the doombug logo lmk im kind of struggling to do it*/}
+
               <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
