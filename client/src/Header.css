@@ -1,0 +1,26 @@
+.btn-circle.btn-sm {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+.account{
+    text-align: center;
+}
+
+input.form-control { width: 700px!important; }
+.dropdown-item{
+    text-align: center;
+}
+#doombug{
+    font-family: "Arial", "Verdana", "Helvetica Neue";
+    font-size: 25px;
+}

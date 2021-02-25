@@ -1,15 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import TestComponent from "./TestComponent";
-
+import Header from "./HeaderComponent";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+let username = 'shmo';
+let email = "shmo@gmail"
+localStorage.setItem("username", username);
+localStorage.setItem("email", email);
 function App() {
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Header />
         <p>
-          hi
+
           <TestComponent />
+
         </p>
         <a
           className="App-link"
@@ -17,7 +27,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+
         </a>
       </header>
     </div>
