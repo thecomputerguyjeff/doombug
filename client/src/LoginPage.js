@@ -1,22 +1,60 @@
 import React, { Component } from "react";
+import { Alert } from 'reactstrap';
 
 export default class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {email: "",
+                      password: "",
+                      renderAlert: false};
+    }
+
+    handleEmailFieldChange = (e) => {
+        this.setState({email: e.target.value});
+    }
+
+    handlePasswordFieldChange = (e) => {
+        this.setState({password: e.target.value});
+    }
+
+    handleLogin = (e) => {
+        e.preventDefault(); // Prevents the form from submitting when Submit button is clicked
+
+        const email =  this.state.email.trim();
+        const password =  this.state.password.trim();
+        if (email.localeCompare("") === 0 || password.localeCompare("") === 0) {
+            this.setState({renderAlert: true});
+        } else {
+            this.setState({renderAlert: false});
+            // Call backend API with user input
+        }
+    }
+
     render() {
+        alert = (
+            <Alert color="danger">
+                Error! Both the email and password fields must be filled in order to login. Please try again.
+            </Alert>
+        );
+
         return (
             <form>
+
+                {this.state.renderAlert && alert}
 
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
                 <div className="form-group">
 
                     <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
+                    <input type="email" onChange = {this.handleEmailFieldChange}  className="form-control" id = "email" placeholder="Enter email" />
 
                 </div>
                 {/*form-control Provides context such as filled/focused/error/required for form inputs*/}
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input type="password" onChange = {this.handlePasswordFieldChange}  className="form-control" id = "password" placeholder="Enter password" />
                 </div>
 
                 <div className="form-group">
@@ -26,10 +64,11 @@ export default class Login extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
+                <button type="submit" onClick = {this.handleLogin} className="btn btn-dark btn-lg btn-block">Sign in</button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
+
             </form>
         );
     }
