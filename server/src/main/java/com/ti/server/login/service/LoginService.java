@@ -18,6 +18,5 @@ public class LoginService {
             }
         }
         return new ResponseEntity<>("invalid credentials", HttpStatus.UNAUTHORIZED);
-
     }
 }
