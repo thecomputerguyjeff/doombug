@@ -11,11 +11,13 @@ export default class Login extends Component {
     }
 
     handleEmailFieldChange = (e) => {
-        this.setState({email: e.target.value});
+        this.setState({email: e.target.value,
+                             renderAlert: false});
     }
 
     handlePasswordFieldChange = (e) => {
-        this.setState({password: e.target.value});
+        this.setState({password: e.target.value,
+                             renderAlert: false});
     }
 
     handleLogin = (e) => {
@@ -26,22 +28,18 @@ export default class Login extends Component {
         if (email.localeCompare("") === 0 || password.localeCompare("") === 0) {
             this.setState({renderAlert: true});
         } else {
-            this.setState({renderAlert: false});
             // Call backend API with user input
         }
     }
 
     render() {
-        alert = (
-            <Alert color="danger">
-                Error! Both the email and password fields must be filled in order to login. Please try again.
-            </Alert>
-        );
-
         return (
             <form>
 
-                {this.state.renderAlert && alert}
+                {this.state.renderAlert && <Alert color="danger">
+                                                Error! Both the email and password fields must be filled in order to login. Please try again.
+                                            </Alert>
+                }
 
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
