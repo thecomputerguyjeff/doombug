@@ -11,8 +11,8 @@ import {DropdownToggle} from 'reactstrap';
 import {DropdownItem} from 'reactstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-let username = localStorage.getItem("username");
-let email = localStorage.getItem("email");
+// let username = localStorage.getItem("username");
+// let email = localStorage.getItem("email");
 
 const Header = (props) => {
 
@@ -20,12 +20,12 @@ const Header = (props) => {
         <Navbar bg="light" expand="lg">
             <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <Navbar.Brand href="#home" id={"doombug"}>D<img
-                src="bug.jpg"
-                width="40"
-                height="40"
+                src="bug4.jpg"
+                width="70"
+                height="60"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
-            />ombug</Navbar.Brand>
+            />omBug</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
@@ -36,11 +36,11 @@ const Header = (props) => {
                 </Nav>
                 <UncontrolledDropdown nav inNavbar className="navbar-brand">
                     <DropdownToggle role="button" className="btn btn-primary btn-circle btn-sm ">
-                        {username[0].toUpperCase()}
+                        {props.username[0].toUpperCase()}
                     </DropdownToggle>
                     <DropdownMenu right >
-                        <div className="account">{username}</div>
-                        <div className="account">{email}</div>
+                        <div className="account">{props.username}</div>
+                        <div className="account">{props.email}</div>
                         <DropdownItem divider />
                         <div className="account"><div className="dropdown-item" href="">edit account</div></div>
                     </DropdownMenu>

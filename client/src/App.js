@@ -3,25 +3,22 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
-import TestComponent from "./TestComponent";
 import Header from "./HeaderComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
-let username = 'shmo';
-let email = "shmo@gmail"
-localStorage.setItem("username", username);
-localStorage.setItem("email", email);
-
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./LoginPage";
 import SignUp from "./SignUp";
 
+
+
+
 function App() {
   return (<Router>
         <div className="App">
-        <Header />
+
           <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+            <Header email={"sdf"} username={"sdfds"}/>
             {/*class is applied to typical branding logo you see in the top navigation bar*/}
             <div className="container">
               <Link className="navbar-brand" to={"/sign-in"}>DoomBug</Link>
