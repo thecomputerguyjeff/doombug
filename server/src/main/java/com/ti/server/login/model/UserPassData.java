@@ -21,8 +21,4 @@ public class UserPassData {
                     .build())
     )
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-
-
-
 }

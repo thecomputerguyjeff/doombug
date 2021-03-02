@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Builder
 @Data
-
-public class UserPass {
+public class UserPass
+{
     public String username;
     public String password;
 }
