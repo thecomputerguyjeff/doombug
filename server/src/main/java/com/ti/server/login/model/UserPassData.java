@@ -12,13 +12,13 @@ import java.util.stream.Stream;
 public class UserPassData {
     public final static Map<UUID, UserPass> map = Stream.of(
             new AbstractMap.SimpleEntry<>(UUID.randomUUID(), UserPass.builder()
-                    .password("pass")
-                    .username("cookoo")
-                    .build()  ),
+                    .username("username1@example.com")
+                    .password("password1")
+                    .build()),
             new AbstractMap.SimpleEntry<>(UUID.randomUUID(), UserPass.builder()
-                    .password("pass")
-                    .username("noony")
-                    .build()   )
+                    .username("username2@example.com")
+                    .password("password2")
+                    .build())
     )
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
