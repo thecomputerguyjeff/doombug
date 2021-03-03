@@ -47,7 +47,6 @@ export default class Login extends Component {
                     this.setState({
                         userKey: response.userKey
                     })                    
-                console.log(response.userKey);
                 })
                 .catch(err=> {
                     console.log(err);
