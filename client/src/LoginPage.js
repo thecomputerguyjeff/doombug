@@ -32,19 +32,22 @@ export default class Login extends Component {
 
             fetch(process.env.REACT_APP_BACKEND_URL + "api/v1/login", {
                 method: "POST",
+                 headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     username: this.state.email,
                     password: this.state.password
                 }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+               
             })
                 .then(res => res.json())
                 .then((response) => {
                     this.setState({
                         userKey: response.userKey
-                    });
+                    })                    
+                console.log(response.userKey);
                 })
                 .catch(err=> {
                     console.log(err);
