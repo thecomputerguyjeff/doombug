@@ -22,32 +22,33 @@ export default class Login extends Component {
 
     handleLogin = (e) => {
         e.preventDefault(); // Prevents the form from submitting when Submit button is clicked
-
         const email =  this.state.email.trim();
         const password =  this.state.password.trim();
+
         if (email.localeCompare("") === 0 || password.localeCompare("") === 0) {
             this.setState({renderAlert: true});
+
         } else {
-            // Call backend API with user input
 
             fetch(process.env.REACT_APP_BACKEND_URL + "api/v1/login", {
                 method: "POST",
                 body: JSON.stringify({
                     username: this.state.email,
                     password: this.state.password
-                })
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then(res => res.json())
                 .then((response) => {
-                    console.log("hii");
                     this.setState({
                         userKey: response.userKey
-                    })
+                    });
                 })
                 .catch(err=> {
                     console.log(err);
                 });
-
         }
     }
 
