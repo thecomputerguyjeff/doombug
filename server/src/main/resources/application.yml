@@ -1,6 +1,3 @@
 spring:
   mvc:
     dispatch-options-request: true
-  data:
-    mongodb:
-      host: doombug-dev.hk3tc.mongodb.net
