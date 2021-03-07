@@ -51,7 +51,6 @@ export default class Login extends Component {
                     })                    
                 })
                 .catch(err=> {
-                    console.log(err);
                     this.setState({reloginPrompt: true});
                 });
         }
@@ -67,7 +66,7 @@ export default class Login extends Component {
                 }
 
                 { this.state.reloginPrompt &&
-                <Alert>Error. Please log in again.</Alert> }
+                <Alert color="warning">Error. Please log in again.</Alert> }
 
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
