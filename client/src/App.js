@@ -5,29 +5,20 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./LoginPage";
 import SignUp from "./SignUp";
+import Head from "./Head";
+import './LoginPage.css';
 
 function App() {
+  let isLoggedIn = false;
+  let username = "shmo";
+  let email = "shmo@gmail";
   return (<Router>
         <div className="App">
-          <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-            {/*class is applied to typical branding logo you see in the top navigation bar*/}
-            <div className="container">
-              <Link className="navbar-brand" to={"/sign-in"}>DoomBug</Link>
-
-              <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          <Head isLoggedIn = {isLoggedIn} username={username} email={email}/>
 
           <div className="outer">
+            <img src="fixed3.webp"  id="gif" />
+            <img src="fixed3.webp" id="gif2"/>
             <div className="inner">
               <Switch>
                 <Route exact path='/' component={Login} />
@@ -36,7 +27,8 @@ function App() {
               </Switch>
             </div>
           </div>
-        </div></Router>
+        </div>
+      </Router>
   );
 }
 //exporting
