@@ -7,7 +7,9 @@ export default class Login extends Component {
         super(props);
         this.state = {email: "",
                       password: "",
-                      renderAlert: false};
+                      renderAlert: false,
+                      reloginPrompt: '',
+                     };
     }
 
     handleEmailFieldChange = (e) => {
@@ -49,7 +51,7 @@ export default class Login extends Component {
                     })                    
                 })
                 .catch(err=> {
-                    console.log(err);
+                    this.setState({reloginPrompt: true});
                 });
         }
     }
@@ -59,9 +61,12 @@ export default class Login extends Component {
             <form>
 
                 {this.state.renderAlert && <Alert color="danger">
-                                                Error! Both the email and password fields must be filled in order to login. Please try again.
-                                            </Alert>
+                    Error! Both the email and password fields must be filled in order to login. Please try again.
+                </Alert>
                 }
+
+                { this.state.reloginPrompt &&
+                <Alert color="warning">Error. Please log in again.</Alert> }
 
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
