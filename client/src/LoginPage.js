@@ -47,8 +47,8 @@ export default class Login extends Component {
                 .then(res => res.json())
                 .then((response) => {
                     this.setState({
-                        userKey: response.userKey
-                    })                    
+                        user: response
+                    });
                 })
                 .catch(err=> {
                     this.setState({reloginPrompt: true});
