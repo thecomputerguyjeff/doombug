@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Login from "./LoginPage";
 import SignUp from "./SignUp";
-import './Switch.css';
+import './Switcher.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 const Switcher = (props) => {
     return (
