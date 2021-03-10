@@ -1,5 +1,6 @@
 package com.ti.server.login.service;
 
+import com.ti.server.login.converter.UserEntityToLoginResponseConverter;
 import com.ti.server.login.model.LoginRequest;
 import com.ti.server.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,11 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 public class LoginService {
 
     private final UserService userService;
+    private final UserEntityToLoginResponseConverter converter;
 
     public ResponseEntity<Object> login(LoginRequest loginRequest) {
         try {
-            return new ResponseEntity<>(userService.getUser(loginRequest.getUsername(), loginRequest.getPassword()), OK);
+            return new ResponseEntity<>(converter.convert(userService.getUser(loginRequest.getUsername(), loginRequest.getPassword())), OK);
         } catch (Exception e) {
             log.error("unable to login", e);
             return new ResponseEntity<>(Collections.singletonMap("Error", "Invalid Credentials"), UNAUTHORIZED);
