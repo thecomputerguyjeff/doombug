@@ -8,12 +8,11 @@ import Head from "./Head";
 import Switcher from "./Switch";
 
 function App() {
-  let isLoggedIn = false;
   let username = "shmo";
   let email = "shmo@gmail";
   return (<Router>
         <div className="App">
-          <Head isLoggedIn = {isLoggedIn} username={username} email={email}/>
+          <Head isLoggedIn = {true} username={username} email={email}/>
           <Switcher/>
         </div>
       </Router>
