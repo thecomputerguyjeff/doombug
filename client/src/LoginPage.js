@@ -8,7 +8,7 @@ export default class Login extends Component {
         this.state = {email: "",
                       password: "",
                       renderAlert: false,
-                      reloginPrompt: '',
+                      reloginPrompt: false,
                      };
     }
 
@@ -66,7 +66,7 @@ export default class Login extends Component {
                 }
 
                 { this.state.reloginPrompt &&
-                <Alert color="warning">Error. Please log in again.</Alert> }
+                <Alert color="danger">Error-incorrect login credentials. Please log in again.</Alert> }
 
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
