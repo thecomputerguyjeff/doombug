@@ -12,7 +12,7 @@ function App() {
   let email = "shmo@gmail";
   return (<Router>
         <div className="App">
-          <Head isLoggedIn = {true} username={username} email={email}/>
+          <Head isLoggedIn = {false} username={username} email={email}/>
           <Switcher/>
         </div>
       </Router>
