@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Alert} from 'reactstrap';
-import {post} from "./helper/Fetch";
+import {post} from "../helper/Fetch";
 
 export default class Login extends Component {
 
@@ -46,6 +46,7 @@ export default class Login extends Component {
                     this.setState({
                         user: response
                     });
+                    this.props.setUser(response)
                 })
                 .catch(err => {
                     this.setState({reloginPrompt: true});
