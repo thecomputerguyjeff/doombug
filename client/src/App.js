@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from "./LoginPage";
-import SignUp from "./SignUp";
-import Head from "./Head";
-import Switcher from "./Switcher";
+import Head from "./components/Head";
+import {Routes} from "./Routes";
 
-function App() {
-  let username = "shmo";
-  let email = "shmo@gmail";
-  return (<Router>
+const App = () => {
+    const [user, setUser] = useState('');
+
+    return (
         <div className="App">
-          <Head isLoggedIn = {false} username={username} email={email}/>
-          <Switcher/>
+            <Head isLoggedIn={user !== ''} username={user.firstName} email={user.email}/>
+            <div className="outer">
+                <img src="fixed3.webp" id="gif"/>
+                <img src="fixed3.webp" id="gif2"/>
+                <div className="routes">
+                    <Routes setUser={setUser}/>
+                </div>
+            </div>
         </div>
-      </Router>
-  );
+    );
 }
 export default App;
