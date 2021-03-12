@@ -44,12 +44,16 @@ export default class Login extends Component {
                 }),
                
             })
-                .then(res => res.json())
-                .then((response) => {
-                    this.setState({
-                        userKey: response.userKey
-                    })                    
+                .then(res => {
+                    if (res.status === 200)
+                        return res.json();
+                    throw 'not 200'
                 })
+                .then((response) => {
+                this.setState( {
+                    user: response
+                });
+            })
                 .catch(err=> {
                     this.setState({reloginPrompt: true});
                 });
