@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Alert, Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Alert} from 'reactstrap';
 import {post} from "../helper/Fetch";
 
 export default class Login extends Component {
@@ -14,11 +14,18 @@ export default class Login extends Component {
         };
     }
 
-    handleFieldChange = (e) => {
+    handleEmailFieldChange = (e) => {
         this.setState({
-            [e.target.id]: e.target.value,
-            renderAlert: false,
-        })
+            email: e.target.value,
+            renderAlert: false
+        });
+    }
+
+    handlePasswordFieldChange = (e) => {
+        this.setState({
+            password: e.target.value,
+            renderAlert: false
+        });
     }
 
     handleLogin = (e) => {
@@ -49,34 +56,45 @@ export default class Login extends Component {
 
     render() {
         return (
-            <Form>
+            <form>
                 {this.state.renderAlert && <Alert color="danger">
                     Error! Both the email and password fields must be filled in order to login. Please try again.
                 </Alert>
                 }
 
                 {this.state.reloginPrompt &&
-                <Alert color="danger">Error-incorrect login credentials. Please
-                    log in again.</Alert>}
+                <Alert color="danger">Error-incorrect login credentials. Please log in again.</Alert>}
+
                 <h3>Log in</h3>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input type="email" name="email" id="email" onChange={this.handleFieldChange}
+                {/*The role of form-group is to track the value and validation state of form control*/}
+                <div className="form-group">
+
+                    <label>Email</label>
+                    <input type="email" onChange={this.handleEmailFieldChange} className="form-control" id="email"
                            placeholder="Enter email"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input type="password" name="password" id="password" onChange={this.handleFieldChange}
-                           placeholder="Enter password"/>
-                </FormGroup>
-                <FormGroup check>
-                    <Label check for="remember">
-                        <Input type="checkbox" id="remember"/>
-                        Remember Me
-                    </Label>
-                </FormGroup>
-                <Button size="lg" block color="dark" onClick={this.handleLogin}>Sign in</Button>
-            </Form>
+
+                </div>
+                {/*form-control Provides context such as filled/focused/error/required for form inputs*/}
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" onChange={this.handlePasswordFieldChange} className="form-control"
+                           id="password" placeholder="Enter password"/>
+                </div>
+
+                <div className="form-group">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1"/>
+                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                    </div>
+                </div>
+
+                <button type="submit" onClick={this.handleLogin} className="btn btn-dark btn-lg btn-block">Sign in
+                </button>
+                <p className="forgot-password text-right">
+                    Forgot <a href="#">password?</a>
+                </p>
+
+            </form>
         );
     }
 }
