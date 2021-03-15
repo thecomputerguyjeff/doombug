@@ -62,32 +62,28 @@ export default class Login extends Component {
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
                 <div className="form-group">
-
                     <label>Username</label>
-                    <input type="text" onChange={(e)=>this.handleFieldChange(e, 'username')} className="form-control" id="username"
+                    <input type="text" onChange={(e) => this.handleFieldChange(e, 'username')} className="form-control"
+                           id="username"
                            placeholder="Enter username"/>
-
                 </div>
-                {/*form-control Provides context such as filled/focused/error/required for form inputs*/}
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" onChange={(e)=>this.handleFieldChange(e, 'password')} className="form-control"
+                    <input type="password" onChange={(e) => this.handleFieldChange(e, 'password')}
+                           className="form-control"
                            id="password" placeholder="Enter password"/>
                 </div>
-
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1"/>
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
-
                 <button type="submit" onClick={this.handleLogin} className="btn btn-dark btn-lg btn-block">Sign in
                 </button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
-
             </form>
         );
     }
