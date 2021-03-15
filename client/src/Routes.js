@@ -7,7 +7,7 @@ export const Routes = (props) => {
         <Switch>
             <Route exact path='/' component={() => <Login setUser={props.setUser}/>} />
             <Route path="/sign-in" component={() => <Login setUser={props.setUser}/>} />
-            <Route path="/sign-up" component={SignUp} />
+            <Route path="/sign-up" component={() => <SignUp setUser={props.setUser} setSignedUp={props.setSignedUp} isSignedUp={props.isSignedUp}/>} />
         </Switch>
     )
 
