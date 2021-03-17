@@ -41,12 +41,15 @@ export default class Login extends Component {
                     username: this.state.email,
                     password: this.state.password
                 }
-            ).then(res => res.json())
+            ).then(res => {
+                if (res.status === 200)
+                    return res.json();
+                throw 'not 200'
+            })
                 .then((response) => {
                     this.setState({
                         user: response
                     });
-                    this.props.setUser(response)
                 })
                 .catch(err => {
                     this.setState({reloginPrompt: true});
