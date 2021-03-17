@@ -17,7 +17,7 @@ export default class SignUp extends Component {
     }
 
     handleFieldChange = (e) => {
-        this.setState({[e.target.name] : e.target.value});
+        this.setState({[e.target.name] : e.target.value, renderAlert: false});
     }
 
     handleSignUp = (e) => {
@@ -32,11 +32,18 @@ export default class SignUp extends Component {
             confirmPassword,
         } = this.state
 
+        const validPassword = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=\S+$).{6,}$/
+
+        const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
         if(fName.localeCompare("") === 0 || lName.localeCompare("") === 0 ||
             email.localeCompare("") === 0 || password.localeCompare("") === 0 ||
-            email.localeCompare(confirmEmail) !== 0 || password.localeCompare(confirmPassword)){
+            email.localeCompare(confirmEmail) !== 0 || password.localeCompare(confirmPassword)
+                || !validPassword.test(password)
+                || !validEmail.test(email)
+        ){
                 this.setState({renderAlert: true})
-        }else{
+        } else{
             this.setState({renderAlert: false})
             //creat new account!
         }
@@ -74,7 +81,7 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" name = "password" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Enter password" />
+                    <input type="password" name = "password" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Enter password (Minimum eight characters, at least one letter and one number)" />
                 </div>
                 <div className="form-group">
                     <label>Confirm Password</label>
@@ -87,3 +94,7 @@ export default class SignUp extends Component {
         );
     }
 }
+
+//when i start typing again, error should clear: FIXED
+//email should only be valid if there is a @ symbol:
+//should password require specific characters/length?: FIXED
