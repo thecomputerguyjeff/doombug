@@ -1,21 +1,18 @@
 import React, {Component} from "react";
-import {Alert} from 'reactstrap';
 import {post} from "../helper/Fetch";
-import {ReroutToLogin} from "./ReroutToLogin";
 
 export default class SignUp extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
             password: "",
             firstName: "",
             lastName: "",
             username: "",
             reloginPrompt: false,
-            redirect: false,
         };
+        this.props.setToggleLogInSignUp(true)
     }
 
     handleFieldChange = (e, key) => {
@@ -28,7 +25,6 @@ export default class SignUp extends Component {
     handleLogin = (e) => {
         e.preventDefault(); // Prevents the form from submitting when Submit button is clicked
         post("api/v1/signUp", {
-                email: this.state.email,
                 password: this.state.password,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -36,30 +32,18 @@ export default class SignUp extends Component {
             }
         ).then()
             .then(() => {
-
-                this.setState({redirect: true});
+                window.location.href = "/sign-in";
             })
             .catch(err => {
-                this.setState({reloginPrompt: true});
             });
     }
 
     render() {
         return (
             <form>
-                {this.state.redirect && <ReroutToLogin setUser={this.state.setUser}/>}
-                {this.state.renderAlert && <Alert color="danger">
-                    Error! Both the email and password fields must be filled in order to login. Please try again.
-                </Alert>}
-                {this.state.reloginPrompt &&
-                <Alert color="danger">Error-incorrect login credentials. Please log in again.</Alert>}
+
                 <h3>Sign up</h3>
-                <div className="form-group">
-                    <label>Username</label>
-                    <input type="text" onChange={(e) => this.handleFieldChange(e, 'username')} className="form-control"
-                           id="username"
-                           placeholder="Enter username"/>
-                </div>
+
                 <div className="form-group">
                     <label>First name</label>
                     <input type="text" onChange={(e) => this.handleFieldChange(e, 'firstName')} className="form-control"
@@ -73,8 +57,8 @@ export default class SignUp extends Component {
                 </div>
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" onChange={(e) => this.handleFieldChange(e, 'email')} className="form-control"
-                           id="email"
+                    <input type="email" onChange={(e) => this.handleFieldChange(e, 'username')} className="form-control"
+                           id="username"
                            placeholder="Enter email"/>
                 </div>
                 <div className="form-group">

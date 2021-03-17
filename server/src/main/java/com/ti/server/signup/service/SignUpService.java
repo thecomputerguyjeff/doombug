@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 public class SignUpService {
     private final UserRepository userRepository;
+
     public ResponseEntity<Object> saveUserInfo(UserEntity userEntity) {
 
         try {

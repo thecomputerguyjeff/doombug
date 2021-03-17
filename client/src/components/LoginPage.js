@@ -12,7 +12,9 @@ export default class Login extends Component {
             renderAlert: false,
             reloginPrompt: false,
         };
+        this.props.setToggleLogInSignUp(false)
     }
+
 
     handleFieldChange = (e, key) => {
         this.setState({
@@ -50,7 +52,9 @@ export default class Login extends Component {
 
     render() {
         return (
+
             <form>
+
                 {this.state.renderAlert && <Alert color="danger">
                     Error! Both the email and password fields must be filled in order to login. Please try again.
                 </Alert>
@@ -62,10 +66,10 @@ export default class Login extends Component {
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
                 <div className="form-group">
-                    <label>Username</label>
+                    <label>Email</label>
                     <input type="text" onChange={(e) => this.handleFieldChange(e, 'username')} className="form-control"
                            id="username"
-                           placeholder="Enter username"/>
+                           placeholder="Enter email"/>
                 </div>
                 <div className="form-group">
                     <label>Password</label>
