@@ -15,6 +15,7 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 
 const Head = (props) => {
     return (
@@ -39,17 +40,23 @@ const Head = (props) => {
                 </Nav>
                 {!props.isLoggedIn && props.toggleLogInSignUp && <Button href={"/sign-in"}>Sign in</Button>}
                 {!props.isLoggedIn && !props.toggleLogInSignUp && <Button href={"/sign-up"}>Sign up</Button>}
+
+
                 {props.isLoggedIn && <UncontrolledDropdown>
-                    <DropdownToggle caret size={"md"}>
-                        {props.firstName}
+                    <DropdownToggle  caret size={"md"}>
+                        {props.firstName}'s Account
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <DropdownItem>
-                            edit profile
+                        <div className="email">{props.email}</div>
+                        <DropdownItem className="dropDownItem">
+                            <Link className="editAccountLink" to={{
+                                pathname: "/edit-account",
+                                state: {user: props.email} }}>
+
+                                Edit Account
+                            </Link>
                         </DropdownItem>
-                        <DropdownItem onClick={() => window.location.href = "/sign-in"}>
-                            log out
-                        </DropdownItem>
+                        
                     </DropdownMenu>
                 </UncontrolledDropdown>}
             </Navbar>
