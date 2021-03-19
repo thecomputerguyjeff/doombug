@@ -14,38 +14,44 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 
 const Head = (props) => {
     return (
         <div>
             <Navbar color="light" light expand="md">
-                {props.isLoggedIn && <span class="LogoWhenLoggedIn">D</span>}
+                {props.isLoggedIn && <span className="LogoWhenLoggedIn">D</span>}
                 {props.isLoggedIn && <span><img
                     src="bug4.jpg"
                     width="40"
                     height="40"
                 /></span>}
-                {props.isLoggedIn && <span class="LogoWhenLoggedIn">omBug</span>}
-                {!props.isLoggedIn && <span class="LogoWhenLoggedOut-FirstPart">D</span>}
+                {props.isLoggedIn && <span className="LogoWhenLoggedIn">omBug</span>}
+                {!props.isLoggedIn && <span className="LogoWhenLoggedOut-FirstPart">D</span>}
                 {!props.isLoggedIn && <span><img
                     src="bug4.jpg"
                     width="40"
                     height="40"
                 />
                 </span>}
-                {!props.isLoggedIn && <span class="LogoWhenLoggedOut-SecondPart">omBug</span>}
+                {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
                 <Nav className="mr-auto" navbar>
                 </Nav>
                 {!props.isLoggedIn && <NavLink href={"/sign-in"}>Sign in</NavLink>}
                 {!props.isLoggedIn && <NavLink href={"/sign-up"}>Sign up</NavLink>}
                 {props.isLoggedIn && <UncontrolledDropdown>
                     <DropdownToggle nav caret>
-                        {props.username}'s account
+                        {props.username}'s Account
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <div class="email">{props.email}</div>
+                        <div className="email">{props.email}</div>
                         <DropdownItem>
-                            edit
+                            <Link to={{
+                                pathname: "/edit-account",
+                                state: {user: props.username} }}>
+
+                                Edit Account
+                            </Link>
                         </DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>}

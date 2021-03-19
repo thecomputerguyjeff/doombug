@@ -14,7 +14,7 @@ const App = () => {
                 <img src="fixed3.webp" id="gif"/>
                 <img src="fixed3.webp" id="gif2"/>
                 <div className="routes">
-                    <Routes setUser={setUser}/>
+                    <Routes setUser={setUser} user={user}/>
                 </div>
             </div>
         </div>

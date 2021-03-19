@@ -1,0 +1,9 @@
+Label {
+    width: 125px;
+    text-align: right;
+}
+
+Button {
+    margin: 8px;
+    width: 200px;
+}
