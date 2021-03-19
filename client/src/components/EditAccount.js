@@ -18,7 +18,8 @@ export default class EditAccount extends Component
             }));
     };
 
-    handleSaveChanges = () => {
+    handleSaveChanges = (e) => {
+        e.preventDefault();
         // Update changes to database.
     };
 
