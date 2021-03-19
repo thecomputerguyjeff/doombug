@@ -17,7 +17,10 @@ export default class SignUp extends Component {
     }
 
     handleFieldChange = (e) => {
-        this.setState({[e.target.name] : e.target.value, renderAlert: false});
+        this.setState({
+            [e.target.name] : e.target.value,
+            renderAlert: false
+        });
     }
 
     handleSignUp = (e) => {
@@ -63,29 +66,29 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>First Name</label>
-                    <input type="fname" name = "fName" onChange={this.handleFieldChange} className="form-control" id = "fname" placeholder="First name" />
+                    <input type="text" title = "Enter first name" name = "fName" onChange={this.handleFieldChange} className="form-control" id = "fname" placeholder="First name" />
                 </div>
                 <div className="form-group">
                     <label>Last Name</label>
-                    <input type="lname" name = "lName" onChange={this.handleFieldChange} className="form-control" id = "lname" placeholder="Last name" />
+                    <input type="text" title = "Enter last name" name = "lName" onChange={this.handleFieldChange} className="form-control" id = "lname" placeholder="Last name" />
                 </div>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" name = "email" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Enter email" />
+                    <input type="email" title = "Must be a valid email" name = "email" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Enter email" />
                 </div>
                 <div className="form-group">
                     <label>Confirm Email</label>
-                    <input type="email" name = "confirmEmail" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Confirm email" />
+                    <input type="email" title = "Must match email" name = "confirmEmail" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Confirm email" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" name = "password" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Enter password (Minimum six characters, at least one letter and one number)" />
+                    <input type="password" title = "Minimum six characters with at least one letter and one number" name = "password" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Enter password" />
                 </div>
                 <div className="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" name = "confirmPassword" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Confirm password" />
+                    <input type="password" title = "Must match password" name = "confirmPassword" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Confirm password" />
                 </div>
 
                 <button type="submit" onClick = {this.handleSignUp} className="btn btn-dark btn-lg btn-block">Sign up</button>
