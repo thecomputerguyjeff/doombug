@@ -18,3 +18,10 @@
     font-size: 2.5vw;
 }
 
+.editAccountLink:hover {
+    text-decoration: none;
+}
+
+.dropDownItem:active {
+    background-color: white;
+}

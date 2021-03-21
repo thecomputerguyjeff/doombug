@@ -43,17 +43,20 @@ const Head = (props) => {
 
 
                 {props.isLoggedIn && <UncontrolledDropdown>
+
                     <DropdownToggle  caret size={"md"}>
-                        {props.firstName}'s Account
+                        {props.user.firstName}'s Account
                     </DropdownToggle>
+
                     <DropdownMenu right>
-                        <div className="email">{props.email}</div>
+
                         <DropdownItem className="dropDownItem">
                             <Link className="editAccountLink" to={{
                                 pathname: "/edit-account",
-                                state: {user: props.email} }}>
+                                state: {user: props.user} }}>
 
                                 Edit Account
+
                             </Link>
                         </DropdownItem>
                         
