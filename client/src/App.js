@@ -16,7 +16,8 @@ const App = () => {
 
                 <div className="routes">
 
-                    <Routes setUser={setUser} user={user} setToggleLogInSignUp={setToggleLogInSignUp}/>
+                    <Routes setUser={setUser} user={user} toggleLogInSignUp={toggleLogInSignUp}
+                            setToggleLogInSignUp={setToggleLogInSignUp}/>
 
                 </div>
             </div>
