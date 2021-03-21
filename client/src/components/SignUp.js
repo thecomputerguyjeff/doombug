@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import {post} from "../helper/Fetch";
 import { Alert } from 'reactstrap';
 
 export default class SignUp extends Component {
@@ -14,6 +15,7 @@ export default class SignUp extends Component {
             confirmPassword: "",
             renderAlert: false,
         };
+        this.props.setToggleLogInSignUp(true)
     }
 
     handleFieldChange = (e) => {
@@ -49,8 +51,21 @@ export default class SignUp extends Component {
         } else{
             this.setState({renderAlert: false})
             //creat new account!
+            post("api/v1/signUp", {
+                    password: this.state.password,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    username: this.state.username,
+                }
+            ).then()
+                .then(() => {
+                    window.location.href = "/sign-in";
+                })
+                .catch(err => {
+                });
         }
     }
+
 
     render() {
         return (
@@ -96,4 +111,5 @@ export default class SignUp extends Component {
             </form>
         );
     }
+
 }
