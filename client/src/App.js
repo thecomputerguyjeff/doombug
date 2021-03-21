@@ -6,15 +6,15 @@ import {Routes} from "./Routes";
 
 const App = () => {
     const [user, setUser] = useState('');
-    const [toggleLogInSignUp, setToggleLogInSignUp] = useState(true);
+
     return (
         <div className="App">
-            <Head isLoggedIn={user !== ''} firstName={user.firstName} toggleLogInSignUp={toggleLogInSignUp}
-                  setToggleLogInSignUp={setToggleLogInSignUp}/>
+            <Head isLoggedIn={user !== ''} username={user.firstName} email={user.email}/>
             <div className="outer">
-
+                <img src="fixed3.webp" id="gif"/>
+                <img src="fixed3.webp" id="gif2"/>
                 <div className="routes">
-                    <Routes setUser={setUser} setToggleLogInSignUp={setToggleLogInSignUp}/>
+                    <Routes setUser={setUser}/>
                 </div>
             </div>
         </div>
