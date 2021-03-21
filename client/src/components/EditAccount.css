@@ -1,9 +1,19 @@
-Label {
+.edit-account__header {
+    color: rgb(65, 61, 65);
+    font-weight: bolder;
+}
+
+.edit-account__label {
     width: 125px;
     text-align: right;
 }
 
-Button {
+.edit-account__input {
+    width: 300px;
+}
+
+.edit-account__button {
     margin: 8px;
     width: 200px;
+    font-weight: bold;
 }

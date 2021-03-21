@@ -30,51 +30,55 @@ export default class EditAccount extends Component
 
     render() {
         return (
-            <Form>
+            <Form className="edit-account">
 
-                <h3> Edit Account Information </h3>
+                <h3 className="edit-account__header"> Edit Account Information </h3> <br/>
 
                 <FormGroup row>
-                    <Label for="firstName"> First Name </Label>
+                    <Label for="firstName" className="edit-account__label"> First Name </Label>
                     <Col>
-                        <Input type="text" name="firstName" id="firstName" onChange={(e) => this.handleFieldChange(e, "firstName")}
+                        <Input type="text" className="edit-account__input" name="firstName" id="firstName"
+                               onChange={(e) => this.handleFieldChange(e, "firstName")}
                                value={this.state.user.firstName} placeholder="First Name"  />
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="lastName"> Last Name </Label>
+                    <Label for="lastName" className="edit-account__label"> Last Name </Label>
                     <Col>
-                        <Input type="text" name="lastName" id="lastName" onChange={(e) => this.handleFieldChange(e, "lastName")}
+                        <Input type="text" className="edit-account__input" name="lastName" id="lastName"
+                               onChange={(e) => this.handleFieldChange(e, "lastName")}
                                value={this.state.user.lastName} placeholder="Enter Last Name"/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="email"> Email </Label>
+                    <Label for="email" className="edit-account__label"> Email </Label>
                     <Col>
-                        <Input type="email" name="email" id="email" onChange={(e) => this.handleFieldChange(e, "username")}
+                        <Input type="email" className="edit-account__input" name="email" id="email"
+                               onChange={(e) => this.handleFieldChange(e, "username")}
                                value={this.state.user.username} placeholder="Enter Email"/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="password"> Change Password </Label>
+                    <Label for="password" className="edit-account__label"> Change Password </Label>
                     <Col>
-                        <Input type="password" name="password" id="password" placeholder="Enter your password"
-                               onChange={(e) => this.handleFieldChange(e, "password")}/>
+                        <Input type="password" className="edit-account__input" name="password" id="password"
+                               placeholder="Enter your password" onChange={(e) => this.handleFieldChange(e, "password")}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="confirmPassword"> Confirm New Password </Label>
+                    <Label for="confirmPassword" className="edit-account__label"> Confirm New Password </Label>
                     <Col>
-                        <Input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm new password"/>
+                        <Input type="password" className="edit-account__input" name="confirmPassword"
+                               id="confirmPassword" placeholder="Confirm new password"/>
                     </Col>
                 </FormGroup>
 
-                <Button size="lg" onClick={this.handleSaveChanges}> Save Changes </Button>
-                <Button size="lg" onClick={this.handleCloseButton}> Close </Button>
+                <Button className="edit-account__button" size="lg" onClick={this.handleSaveChanges}> Save Changes </Button>
+                <Button className="edit-account__button" size="lg" onClick={this.handleCloseButton}> Close </Button>
 
             </Form>
         )
