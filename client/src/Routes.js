@@ -6,10 +6,18 @@ import EditAccount from "./components/EditAccount";
 export const Routes = (props) => {
     return (
         <Switch>
-            <Route exact path='/' component={() => <Login setUser={props.setUser}/>} />
-            <Route path="/sign-in" component={() => <Login setUser={props.setUser}/>} />
-            <Route path="/sign-up" component={SignUp} />
+
+            <Route exact path='/' component={() => <Login setUser={props.setUser}
+                                                          setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+
+            <Route path="/sign-in" component={() => <Login setUser={props.setUser}
+                                                           setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+
+            <Route path="/sign-up" component={() => <SignUp setUser={props.setUser}
+                                                            setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+
             <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>} />
+
         </Switch>
     )
-}
+};
