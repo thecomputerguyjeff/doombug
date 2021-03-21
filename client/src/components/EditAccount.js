@@ -23,6 +23,11 @@ export default class EditAccount extends Component
         // Update changes to database.
     };
 
+    handleCloseButton = (e) => {
+        e.preventDefault();
+        // Handle Close button to cancel changes made.
+    }
+
     render() {
         return (
             <Form>
@@ -68,8 +73,8 @@ export default class EditAccount extends Component
                     </Col>
                 </FormGroup>
 
-                <Button size="lg" onChange={this.handleSaveChanges}> Save Changes </Button>
-                <Button size="lg"> Close </Button>
+                <Button size="lg" onClick={this.handleSaveChanges}> Save Changes </Button>
+                <Button size="lg" onClick={this.handleCloseButton}> Close </Button>
 
             </Form>
         )
