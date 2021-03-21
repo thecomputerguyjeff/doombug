@@ -38,8 +38,8 @@ const Head = (props) => {
                 {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
                 <Nav className="mr-auto" navbar>
                 </Nav>
-                {!props.isLoggedIn && props.toggleLogInSignUp && <Button href={"/sign-in"}>Sign in</Button>}
-                {!props.isLoggedIn && !props.toggleLogInSignUp && <Button href={"/sign-up"}>Sign up</Button>}
+                {!props.isLoggedIn && props.toggleLogInSignUp && <Button onClick={()=>window.location.href = "/sign-in"}>Sign in</Button>}
+                {!props.isLoggedIn && !props.toggleLogInSignUp && <Button onClick={()=>window.location.href = "/sign-up"}>Sign up</Button>}
 
 
                 {props.isLoggedIn && <UncontrolledDropdown>
