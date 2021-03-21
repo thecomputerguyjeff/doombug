@@ -1,98 +1,108 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-body {
-    display: flex;
-    font-weight: bold;
-    font-family: "Helvetica Neue";
-    background-color: white;
-    position: absolute;
+#gif{
+  float: left;
+  height: 38%;
+  width: 30%;
+  margin-top: 100px;
+  border-radius: 15%;
 }
-
+#gif2{
+  right:0;
+  width: 30%;
+  height: 38%;
+  margin-top: 100px;
+  border-radius: 15%;
+  float: right;
+}
+body{
+  display: flex;
+  font-weight: bold;
+  font-family: "Helvetica Neue";
+  background-color: white;
+  position: absolute;
+}
 body, html, .App, #root, .outer {
-    width: 100%;
-
-    font-weight: bold;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
 }
-
+.outer {
+  float: left;
+}
 .navbar-light {
-    background-color: #ffffff;
-    box-shadow: 0px 14px 40px rgba(90, 91, 153, 0.2);
-    margin-bottom: 60px;
+  background-color: #ffffff;
+  box-shadow: 0px 14px 40px rgba(90, 91, 153, 0.2);
+  margin-bottom: 60px;
 }
-
 .routes {
-    width: 400px;
-    background-color: #ffffff;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-    padding: 40px 55px 45px 55px;
-    border-radius: 15px;
-    transition: all .3s;
-    margin: auto auto 30px;
+  width: 40%;
+  margin: auto;
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
 }
-
 .outer .form-control:focus {
-    border-color: #167bff;
-    box-shadow: none;
+  border-color: #167bff;
+  box-shadow: none;
 }
-
 .outer h3 {
-    text-align: center;
-    margin: 0;
-    line-height: 1;
-    padding-bottom: 20px;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
 }
-
 .custom-control-label {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .forgot-password,
 .forgot-password a {
-    text-align: right;
-    font-size: 13px;
-    padding-top: 10px;
-    color: #7f7d7d;
-    margin: 0;
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
 }
-
 .forgot-password a {
-    color: #167bff;
+  color: #167bff;
 }
 

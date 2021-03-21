@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-
-public class SignUpService {
+public class SignUpService
+{
     private final UserRepository userRepository;
 
     public ResponseEntity<Object> saveUserInfo(UserEntity userEntity) {
@@ -18,7 +18,6 @@ public class SignUpService {
         try {
             userRepository.save(userEntity);
             return new ResponseEntity<>("User has been successfully signed up and saved in the database.", HttpStatus.CREATED);
-
         } catch (Exception e) {
             return new ResponseEntity<>("Error. User info wasn't saved and user has not been signed up.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
