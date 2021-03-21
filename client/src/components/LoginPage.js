@@ -50,6 +50,7 @@ export default class Login extends Component {
                     this.setState({
                         user: response
                     });
+                    this.props.setUser(response)
                 })
                 .catch(err => {
                     this.setState({reloginPrompt: true});
