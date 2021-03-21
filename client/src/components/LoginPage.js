@@ -7,34 +7,38 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: "",
             renderAlert: false,
             reloginPrompt: false,
         };
-        this.props.setToggleLogInSignUp(false)
     }
 
-
-    handleFieldChange = (e, key) => {
+    handleEmailFieldChange = (e) => {
         this.setState({
-            [key]: e.target.value,
-
+            email: e.target.value,
+            renderAlert: false
         });
     }
 
+    handlePasswordFieldChange = (e) => {
+        this.setState({
+            password: e.target.value,
+            renderAlert: false
+        });
+    }
 
     handleLogin = (e) => {
         e.preventDefault(); // Prevents the form from submitting when Submit button is clicked
-        const username = this.state.username.trim();
+        const email = this.state.email.trim();
         const password = this.state.password.trim();
 
-        if (username.localeCompare("") === 0 || password.localeCompare("") === 0) {
+        if (email.localeCompare("") === 0 || password.localeCompare("") === 0) {
             this.setState({renderAlert: true});
 
         } else {
             post("api/v1/login", {
-                    username: this.state.username,
+                    username: this.state.email,
                     password: this.state.password
                 }
             ).then(res => res.json())
@@ -52,9 +56,7 @@ export default class Login extends Component {
 
     render() {
         return (
-
             <form>
-
                 {this.state.renderAlert && <Alert color="danger">
                     Error! Both the email and password fields must be filled in order to login. Please try again.
                 </Alert>
@@ -66,28 +68,32 @@ export default class Login extends Component {
                 <h3>Log in</h3>
                 {/*The role of form-group is to track the value and validation state of form control*/}
                 <div className="form-group">
+
                     <label>Email</label>
-                    <input type="text" onChange={(e) => this.handleFieldChange(e, 'username')} className="form-control"
-                           id="username"
+                    <input type="email" onChange={this.handleEmailFieldChange} className="form-control" id="email"
                            placeholder="Enter email"/>
+
                 </div>
+                {/*form-control Provides context such as filled/focused/error/required for form inputs*/}
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" onChange={(e) => this.handleFieldChange(e, 'password')}
-                           className="form-control"
+                    <input type="password" onChange={this.handlePasswordFieldChange} className="form-control"
                            id="password" placeholder="Enter password"/>
                 </div>
+
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1"/>
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
+
                 <button type="submit" onClick={this.handleLogin} className="btn btn-dark btn-lg btn-block">Sign in
                 </button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
+
             </form>
         );
     }
