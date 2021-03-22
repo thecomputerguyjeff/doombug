@@ -44,8 +44,12 @@ const Head = (props) => {
                     </DropdownToggle>
                     <DropdownMenu right>
                         <div className="email">{props.email}</div>
-                        <DropdownItem>
-                            edit
+                        <DropdownItem className="dropDownItem">
+                            <Link className="editAccountLink" to={{
+                                pathname: "/edit-account",
+                                state: {user: props.email}
+                            }}> Edit Account
+                            </Link>
                         </DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>}
