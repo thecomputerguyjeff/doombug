@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Head.css';
 import {
+    Button,
     Collapse,
     Navbar,
     NavbarToggler,
@@ -14,6 +15,7 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import {Link} from "react-router-dom";
 
 const Head = (props) => {
     return (
@@ -36,22 +38,26 @@ const Head = (props) => {
                 {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
                 <Nav className="mr-auto" navbar>
                 </Nav>
-                {!props.isLoggedIn && <NavLink href={"/sign-in"}>Sign in</NavLink>}
-                {!props.isLoggedIn && <NavLink href={"/sign-up"}>Sign up</NavLink>}
+                {!props.isLoggedIn && props.toggleLogInSignUp && <Button href={"/sign-in"}>Sign in</Button>}
+                {!props.isLoggedIn && !props.toggleLogInSignUp && <Button href={"/sign-up"}>Sign up</Button>}
+
+
                 {props.isLoggedIn && <UncontrolledDropdown>
-                    <DropdownToggle nav caret>
-                        {props.username}'s account
+
+                    <DropdownToggle  caret size={"md"}>
+                        {props.user.firstName}'s Account
                     </DropdownToggle>
+
                     <DropdownMenu right>
                         <DropdownItem className="dropDownItem">
                             <Link className="editAccountLink" to={{
                                 pathname: "/edit-account",
-                                state: {user: props.user}
-                            }}>
+                                state: {user: props.user} }}>
 
                                 Edit Account
                             </Link>
                         </DropdownItem>
+                        
                     </DropdownMenu>
                 </UncontrolledDropdown>}
             </Navbar>
