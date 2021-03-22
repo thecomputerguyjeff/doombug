@@ -37,7 +37,11 @@ export default class Login extends Component {
                     username: this.state.username,
                     password: this.state.password
                 }
-            ).then(res => res.json())
+            ).then(res => {
+                if (res.status === 200)
+                    return res.json();
+                throw 'not 200'
+            })
                 .then((response) => {
                     this.setState({
                         user: response
