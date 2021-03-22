@@ -49,14 +49,12 @@ const Head = (props) => {
                     </DropdownToggle>
 
                     <DropdownMenu right>
-
                         <DropdownItem className="dropDownItem">
                             <Link className="editAccountLink" to={{
                                 pathname: "/edit-account",
                                 state: {user: props.user} }}>
 
                                 Edit Account
-
                             </Link>
                         </DropdownItem>
                         
