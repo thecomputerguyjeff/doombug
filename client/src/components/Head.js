@@ -16,8 +16,12 @@ import {
     NavbarText
 } from 'reactstrap';
 import {Link} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 const Head = (props) => {
+    let history = useHistory();
+    
     return (
         <div>
             <Navbar color="light" light expand="md">
@@ -38,8 +42,8 @@ const Head = (props) => {
                 {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
                 <Nav className="mr-auto" navbar>
                 </Nav>
-                {!props.isLoggedIn && props.toggleLogInSignUp && <Button onClick={()=>window.location.href = "/sign-in"}>Sign in</Button>}
-                {!props.isLoggedIn && !props.toggleLogInSignUp && <Button onClick={()=>window.location.href = "/sign-up"}>Sign up</Button>}
+                {!props.isLoggedIn && props.toggleLogInSignUp && <Button onClick={()=> history.push("/sign-in")}>Sign in</Button>}
+                {!props.isLoggedIn && !props.toggleLogInSignUp && <Button onClick={()=>history.push("/sign-up")}>Sign up</Button>}
 
 
                 {props.isLoggedIn && <UncontrolledDropdown>
