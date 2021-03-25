@@ -21,7 +21,7 @@ import { useHistory } from "react-router-dom";
 
 const Head = (props) => {
     let history = useHistory();
-    
+
     return (
         <div>
             <Navbar color="light" light expand="md">

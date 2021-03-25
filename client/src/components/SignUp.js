@@ -50,12 +50,11 @@ export default class SignUp extends Component {
             this.setState({renderAlert: true})
         } else{
             this.setState({renderAlert: false})
-            //creat new account!
             post("api/v1/signUp", {
                     password: this.state.password,
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    username: this.state.username,
+                    firstName: this.state.fName,
+                    lastName: this.state.lName,
+                    username: this.state.email,
                 }
             ).then()
                 .then(() => {
