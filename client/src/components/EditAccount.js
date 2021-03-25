@@ -1,20 +1,13 @@
 import React, {Component} from "react";
 import {Button, Col, Form, FormGroup, Input, Label} from 'reactstrap';
 import './EditAccount.css';
-import {post} from "../helper/Fetch";
 
 export default class EditAccount extends Component
 {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
-            fName: "",
-            lName: "",
-            email: "",
-            confirmEmail: "",
-            password: "",
-            confirmPassword: "",
+            user: this.props.user
         };
     }
 
@@ -22,23 +15,12 @@ export default class EditAccount extends Component
 
         this.setState(previousState => ({
             user: { ...previousState.user,  [key]: e.target.value }
-            }));
+        }));
     };
 
     handleSaveChanges = (e) => {
         e.preventDefault();
-        post("api/v1/signUp", {
-                password: this.state.password,
-                firstName: this.state.fName,
-                lastName: this.state.lName,
-                username: this.state.username,
-            }
-        ).then()
-            .then(() => {
-
-            })
-            .catch(err => {
-            });
+        // Update changes to database.
     };
 
     handleCloseButton = (e) => {
