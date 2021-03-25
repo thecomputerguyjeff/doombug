@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import {Button, Col, Form, FormGroup, Input, Label} from 'reactstrap';
 import './EditAccount.css';
 
-export default class EditAccount extends Component
-{
+export default class EditAccount extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +13,7 @@ export default class EditAccount extends Component
     handleFieldChange = (e, key) => {
 
         this.setState(previousState => ({
-            user: { ...previousState.user,  [key]: e.target.value }
+            user: {...previousState.user, [key]: e.target.value}
         }));
     };
 
@@ -39,7 +38,7 @@ export default class EditAccount extends Component
                     <Col>
                         <Input type="text" className="edit-account__input" name="firstName" id="firstName"
                                onChange={(e) => this.handleFieldChange(e, "firstName")}
-                               value={this.state.user.firstName} placeholder="First Name"  />
+                               value={this.state.user.firstName} placeholder="First Name"/>
                     </Col>
                 </FormGroup>
 
@@ -65,7 +64,8 @@ export default class EditAccount extends Component
                     <Label for="password" className="edit-account__label"> Change Password </Label>
                     <Col>
                         <Input type="password" className="edit-account__input" name="password" id="password"
-                               placeholder="Enter your password" onChange={(e) => this.handleFieldChange(e, "password")}/>
+                               placeholder="Enter your password"
+                               onChange={(e) => this.handleFieldChange(e, "password")}/>
                     </Col>
                 </FormGroup>
 
@@ -77,7 +77,8 @@ export default class EditAccount extends Component
                     </Col>
                 </FormGroup>
 
-                <Button className="edit-account__button" size="lg" onClick={this.handleSaveChanges}> Save Changes </Button>
+                <Button className="edit-account__button" size="lg" onClick={this.handleSaveChanges}> Save
+                    Changes </Button>
                 <Button className="edit-account__button" size="lg" onClick={this.handleCloseButton}> Close </Button>
 
             </Form>
