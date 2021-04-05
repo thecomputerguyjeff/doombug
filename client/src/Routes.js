@@ -5,6 +5,7 @@ import EditAccount from "./components/EditAccount";
 
 export const Routes = (props) => {
     return (
+
         <Switch>
 
             <Route exact path='/' component={() => <Login setUser={props.setUser}

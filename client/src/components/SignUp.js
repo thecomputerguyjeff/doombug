@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {post} from "../helper/Fetch";
-import { Alert } from 'reactstrap';
+import {Alert} from 'reactstrap';
 
 export default class SignUp extends Component {
 
@@ -20,7 +20,7 @@ export default class SignUp extends Component {
 
     handleFieldChange = (e) => {
         this.setState({
-            [e.target.name] : e.target.value,
+            [e.target.name]: e.target.value,
             renderAlert: false
         });
     }
@@ -41,14 +41,14 @@ export default class SignUp extends Component {
 
         const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-        if(fName.localeCompare("") === 0 || lName.localeCompare("") === 0 ||
+        if (fName.localeCompare("") === 0 || lName.localeCompare("") === 0 ||
             email.localeCompare("") === 0 || password.localeCompare("") === 0 ||
             email.localeCompare(confirmEmail) !== 0 || password.localeCompare(confirmPassword)
             || !validPassword.test(password)
             || !validEmail.test(email)
-        ){
+        ) {
             this.setState({renderAlert: true})
-        } else{
+        } else {
             this.setState({renderAlert: false})
             post("api/v1/signUp", {
                     password: this.state.password,
@@ -56,11 +56,16 @@ export default class SignUp extends Component {
                     lastName: this.state.lName,
                     username: this.state.email,
                 }
-            ).then()
+            ).then(res => {
+                if (res.status === 200)
+                    return res.json();
+                throw 'not 200'
+            })
                 .then(() => {
                     window.location.href = "/sign-in";
                 })
                 .catch(err => {
+                    this.setState({reloginPrompt: true});
                 });
         }
     }
@@ -80,32 +85,41 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>First Name</label>
-                    <input type="text" title = "Enter first name" name = "fName" onChange={this.handleFieldChange} className="form-control" id = "fname" placeholder="First name" />
+                    <input type="text" title="Enter first name" name="fName" onChange={this.handleFieldChange}
+                           className="form-control" id="fname" placeholder="First name"/>
                 </div>
                 <div className="form-group">
                     <label>Last Name</label>
-                    <input type="text" title = "Enter last name" name = "lName" onChange={this.handleFieldChange} className="form-control" id = "lname" placeholder="Last name" />
+                    <input type="text" title="Enter last name" name="lName" onChange={this.handleFieldChange}
+                           className="form-control" id="lname" placeholder="Last name"/>
                 </div>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" title = "Must be a valid email" name = "email" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Enter email" />
+                    <input type="email" title="Must be a valid email" name="email" onChange={this.handleFieldChange}
+                           className="form-control" id="email" placeholder="Enter email"/>
                 </div>
                 <div className="form-group">
                     <label>Confirm Email</label>
-                    <input type="email" title = "Must match email" name = "confirmEmail" onChange={this.handleFieldChange} className="form-control" id = "email" placeholder="Confirm email" />
+                    <input type="email" title="Must match email" name="confirmEmail" onChange={this.handleFieldChange}
+                           className="form-control" id="confirmEmail" placeholder="Confirm email"/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" title = "Minimum six characters with at least one letter and one number" name = "password" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Enter password" />
+                    <input type="password" title="Minimum six characters with at least one letter and one number"
+                           name="password" onChange={this.handleFieldChange} className="form-control" id="password"
+                           placeholder="Enter password"/>
                 </div>
                 <div className="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" title = "Must match password" name = "confirmPassword" onChange={this.handleFieldChange} className="form-control" id = "password" placeholder="Confirm password" />
+                    <input type="password" title="Must match password" name="confirmPassword"
+                           onChange={this.handleFieldChange} className="form-control" id="confirmPassword"
+                           placeholder="Confirm password"/>
                 </div>
 
-                <button type="submit" onClick = {this.handleSignUp} className="btn btn-dark btn-lg btn-block">Sign up</button>
+                <button type="submit" onClick={this.handleSignUp} className="btn btn-dark btn-lg btn-block">Sign up
+                </button>
 
             </form>
         );
