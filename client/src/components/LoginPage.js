@@ -19,9 +19,10 @@ export default class Login extends Component {
     handleFieldChange = (e, key) => {
         this.setState({
             [key]: e.target.value,
-
+            renderAlert: false,
+            reloginPrompt: false
         });
-    }
+    };
 
 
     handleLogin = (e) => {
