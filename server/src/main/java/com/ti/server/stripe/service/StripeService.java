@@ -16,14 +16,12 @@ public class StripeService
 
         Stripe.apiKey = "sk_test_51If5WfAvUyzs1dkX4OidydSPFFj4acLAx3zgZ3l2qKy08P0cHuGG5zuhuPL4rOv9mkZAnhgSyogqX2C8hHX5gZ4Q00dLcKGpqB";
 
-        System.out.println(amount);
         PaymentIntentCreateParams paymentIntentCreateParams = PaymentIntentCreateParams
                 .builder()
                 .setCurrency("usd")
                 .setCustomer(customerID)
                 .setAmount((long) (amount * 100))
                 .build();
-        System.out.println((long) (amount * 100));
 
         PaymentIntent intent = PaymentIntent.create(paymentIntentCreateParams);
         return ClientSecretResponse

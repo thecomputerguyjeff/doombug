@@ -8,7 +8,6 @@ import com.stripe.model.PaymentMethod;
 import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.PaymentIntentCreateParams;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
