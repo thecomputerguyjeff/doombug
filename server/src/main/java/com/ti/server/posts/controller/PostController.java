@@ -3,9 +3,10 @@ package com.ti.server.posts.controller;
 import com.ti.server.posts.entity.PostEntity;
 import com.ti.server.posts.service.PostService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class PostController
     }
 
     @GetMapping("/getAllPosts")
-    public Object getAllPosts() {
+    public List<PostEntity> getAllPosts() {
         return postService.getAllPosts();
     }
 }
