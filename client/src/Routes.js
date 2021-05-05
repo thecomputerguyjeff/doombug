@@ -5,18 +5,25 @@ import EditAccount from "./components/EditAccount";
 
 export const Routes = (props) => {
     return (
+
         <Switch>
 
             <Route exact path='/' component={() => <Login setUser={props.setUser}
-                                                          setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+                                                          setToggleLogInSignUp={props.setToggleLogInSignUp}
+                                                          toggleLogInSignUp={props.toggleLogInSignUp}
+            />}/>
 
             <Route path="/sign-in" component={() => <Login setUser={props.setUser}
-                                                           setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+                                                           setToggleLogInSignUp={props.setToggleLogInSignUp}
+                                                           toggleLogInSignUp={props.toggleLogInSignUp}
+            />}/>
 
             <Route path="/sign-up" component={() => <SignUp setUser={props.setUser}
-                                                            setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
+                                                            setToggleLogInSignUp={props.setToggleLogInSignUp}
+                                                            toggleLogInSignUp={props.toggleLogInSignUp}
+            />}/>
 
-            <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>} />
+            <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>}/>
 
         </Switch>
     )
