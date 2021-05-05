@@ -17,7 +17,7 @@ public class PaymentIntentController {
     private final PaymentIntentService paymentIntentService;
 
     @PostMapping("/stripe-customer-ID")
-    public Object convertUserIDToStripeCustomerID (@RequestBody UserIDToStripeIDRequest userIDToStripeIDRequest) {
+    public String convertUserIDToStripeCustomerID (@RequestBody UserIDToStripeIDRequest userIDToStripeIDRequest) {
         return paymentIntentService.convertUserIDToStripeCustomerID(userIDToStripeIDRequest.getUserID());
     }
 

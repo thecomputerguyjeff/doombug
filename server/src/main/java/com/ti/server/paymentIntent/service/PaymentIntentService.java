@@ -19,9 +19,9 @@ public class PaymentIntentService
 {
     private final UserService userService;
 
-    public Object convertUserIDToStripeCustomerID(String userID) {
+    public String convertUserIDToStripeCustomerID(String userID) {
         UserEntity userEntity = userService.getUser(userID);
-        return userEntity.getstripeCustomerID();
+        return userEntity.getStripeCustomerID();
     }
 
     public ClientSecretResponse createPaymentIntent(double amount, String stripeCustomerID) throws StripeException {
