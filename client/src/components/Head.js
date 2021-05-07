@@ -38,6 +38,8 @@ const Head = (props) => {
                 {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
                 <Nav className="mr-auto" navbar>
                 </Nav>
+                {/*{<p href={"/post-page"} className="posts-link">Posts*/}
+                {/*</p>}*/}
                 {!props.isLoggedIn && props.toggleLogInSignUp && <Button href={"/sign-in"}>Sign in</Button>}
                 {!props.isLoggedIn && !props.toggleLogInSignUp && <Button href={"/sign-up"}>Sign up</Button>}
 

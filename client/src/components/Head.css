@@ -25,3 +25,7 @@
 .dropDownItem:active {
     background-color: white;
 }
+
+.btn posts-link {
+    width: 50px;
+}

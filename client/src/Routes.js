@@ -2,6 +2,7 @@ import {Route, Switch} from "react-router-dom";
 import Login from "./components/LoginPage";
 import SignUp from "./components/SignUp";
 import EditAccount from "./components/EditAccount";
+import PostPage from "./components/PostPage";
 
 export const Routes = (props) => {
     return (
@@ -17,6 +18,8 @@ export const Routes = (props) => {
                                                             setToggleLogInSignUp={props.setToggleLogInSignUp}/>}/>
 
             <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>} />
+
+            <Route path="/post-page" component={() => <PostPage/>} />
 
         </Switch>
     )
