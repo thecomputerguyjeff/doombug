@@ -1,7 +1,7 @@
 import React, {Component, useEffect} from "react";
 import {Alert} from 'reactstrap';
 import {post} from "../helper/Fetch";
-import App from "../App";
+import {Redirect} from "react-router-dom";
 
 export default class Login extends Component {
 
@@ -46,10 +46,14 @@ export default class Login extends Component {
                 throw 'not 200'
             })
                 .then((response) => {
+
+                    this.setState({
+                        redirect: true
+                    });
+
                     this.props.setUser(response)
 
                     localStorage.setItem('user', JSON.stringify(response));
-
 
                 })
                 .catch(err => {
@@ -60,6 +64,11 @@ export default class Login extends Component {
 
     }
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/feed' />
+        }
+    }
 
     render() {
         return (
@@ -94,6 +103,7 @@ export default class Login extends Component {
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
+                {this.renderRedirect()}
                 <button type="submit" onClick={this.handleLogin} className="btn btn-dark btn-lg btn-block">Sign in
                 </button>
                 <p className="forgot-password text-right">
