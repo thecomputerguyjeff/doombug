@@ -7,7 +7,7 @@ export default class Post extends Component {
         this.state = {
             title: "",
             content: "",
-            author:  {
+            author: {
                 username: "",
                 firstname: "",
             },
@@ -36,12 +36,15 @@ export default class Post extends Component {
                 </div>
                 <div className="form-group">
                     <label>Content</label>
-                    <input type="text" className="form-control"
-                           id="content"
-                           placeholder="Enter Content of Post"/>
+                    <textarea type="textarea" maxLength="140"
+                              rows="7" className="form-control"
+                              id="content"
+                              placeholder="Enter Content of Post"/>
                 </div>
 
-                <button type="submit" onClick = {this.handleSubmit} onSubmit className="btn btn-dark btn-lg btn-block">Post</button>
+                <button type="submit" onClick={this.handleSubmit} onSubmit
+                        className="btn btn-dark btn-lg btn-block">Post
+                </button>
             </form>
         );
     }
