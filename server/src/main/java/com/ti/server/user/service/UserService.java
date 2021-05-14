@@ -15,4 +15,9 @@ public class UserService {
         return userRepository.findByUsernameAndPassword(username, password)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("No User found for %s", username)));
     }
+
+    public UserEntity getUser(String userID) {
+        return userRepository.findById(userID)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("No User found for %s", userID)));
+    }
 }
