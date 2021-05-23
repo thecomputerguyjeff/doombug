@@ -11,17 +11,17 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(originPatterns = {"*localhost*", "/"})
-@RequestMapping("/api/v1/posts")
+@RequestMapping("/api/v1")
 public class PostController
 {
     private final PostService postService;
 
-    @PostMapping("/saveNewPost")
+    @PostMapping("/post")
     public ResponseEntity<String> saveNewPost(@RequestBody PostEntity postEntity) {
         return postService.saveNewPost(postEntity);
     }
 
-    @GetMapping("/getAllPosts")
+    @GetMapping("/feed")
     public List<PostEntity> getAllPosts() {
         return postService.getAllPosts();
     }
