@@ -4,6 +4,7 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
+import com.stripe.param.BalanceTransactionListParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +15,31 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class PaymentReportsService
-{
+public class PaymentReportsService {
     public List<BalanceTransaction> getPaymentReports() throws StripeException {
 
+        List<BalanceTransaction> balanceTransactionList = new ArrayList<>();
+        String current = null;
+        boolean more = true;
         Stripe.apiKey = "sk_test_51If5WfAvUyzs1dkX4OidydSPFFj4acLAx3zgZ3l2qKy08P0cHuGG5zuhuPL4rOv9mkZAnhgSyogqX2C8hHX5gZ4Q00dLcKGpqB";
 
-        Map<String, Object> balanceTransactionListParams = new HashMap<>();
-        balanceTransactionListParams.put("limit", 100);
-        BalanceTransactionCollection balanceTransactions = BalanceTransaction.list(balanceTransactionListParams);
+        while (more) {
+            BalanceTransactionListParams balanceTransactionListParams = BalanceTransactionListParams.builder()
+                    .setLimit(5L)
+                    .setStartingAfter(current)
+                    .build();
 
-        return new ArrayList<>(balanceTransactions.getData());
+            BalanceTransactionCollection balanceTransactions = BalanceTransaction.list(balanceTransactionListParams);
+            balanceTransactionList.addAll(balanceTransactions.getData());
+
+            if(!balanceTransactions.getHasMore()) {
+                more = false;
+            }
+            else {
+                current = balanceTransactions.getData().get(4).getId();
+            }
+
+        }
+        return balanceTransactionList;
     }
 }
