@@ -3,5 +3,3 @@ spring:
     mongodb:
       host: localhost
       database: doombug
-server:
-  port: 8081

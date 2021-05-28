@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Alert} from "reactstrap";
-import {post} from "../helper/Fetch";
 
 export default class Post extends Component {
 
@@ -61,10 +60,9 @@ export default class Post extends Component {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                 },
                 body: JSON.stringify(data),
-                mode: 'no-cors',
-                credentials: 'include',
             })
         .then(res => {
             if(res.status === 200)
