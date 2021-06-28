@@ -9,6 +9,8 @@ const App = () => {
     const [user, setUser] = useState('');
     const [redirect, setRedirect] = useState(false);
     const [toggleLogInSignUp, setToggleLogInSignUp] = useState(true);
+    const [posts, setPosts] = useState([]);
+    const [retPosts, setRetPosts] = useState("");
     useEffect(() => {
         const loggedInUser = JSON.parse(localStorage.getItem('user'));
         if (loggedInUser) {
@@ -29,7 +31,8 @@ const App = () => {
 
 
                     <Routes setUser={setUser} user={user} toggleLogInSignUp={toggleLogInSignUp}
-                            setToggleLogInSignUp={setToggleLogInSignUp} />
+                            setToggleLogInSignUp={setToggleLogInSignUp} posts={posts} setPosts={setPosts} setRetPosts={setRetPosts}
+                    retPosts={retPosts}/>
 
                 </div>
             </div>

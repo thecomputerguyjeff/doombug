@@ -30,6 +30,7 @@ const Head = (props) => {
     };
     const renderRedirect = () => {
         if(props.redirect){
+            props.setRedirect(false);
             return <Redirect to='/newPost' />
 
         }

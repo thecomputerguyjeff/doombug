@@ -27,7 +27,8 @@ export const Routes = (props) => {
 
             <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>}/>
 
-            <Route path="/feed" component={() => <Feed setUser={props.setUser} user={props.user} firstname = {props.firstname}/>} />
+            <Route path="/feed" component={() => <Feed setUser={props.setUser} user={props.user} firstname = {props.firstname}
+            setPosts={props.setPosts} posts={props.posts} setRetPosts={props.setRetPosts} retPosts={props.retPosts}/>} />
 
             <Route path="/newPost" component={() => <Post setUser={props.setUser} user={props.user} />} />
 

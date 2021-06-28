@@ -8,34 +8,16 @@ import Post from "./Post";
 
 const Feed = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            redirect: false,
-            posts: [],
-            retPosts: ""
 
-
-        };
-
-    }
 
 
     useEffect(() => {
-    getPosts();
-    if (this._isMounted) {
-    this.setState({
-                      retPosts: (this.state.posts.map(
-(_item, _index) => { // Note: represent function body, normal javascript function
-    return <Post
-key={_index}
-title={_item.title}
-content={_item.content}
-/>;
-}))
-});
-}
-}, []);
+        getPosts();
+
+
+
+
+    }, []);
 
 
 
@@ -50,20 +32,20 @@ content={_item.content}
         })
             .then((response) => {
 
-                this.setState({
-                    redirect: true
-                });
+               props.setPosts(response);
+                props.setRetPosts(props.posts.map((_item, _index) => { // Note: represent function body, normal javascript function
+                    return <Post
+                        key={_index}
+                        title={_item.title}
+                        content={_item.content}
+                    />;
+                }));
 
 
-                this.setState({
-                    posts: response
-                });
-                console.log(response)
 
 
             })
             .catch(err => {
-                this.setState({reloginPrompt: true});
                 console.log(err)
 
             });
@@ -72,17 +54,21 @@ content={_item.content}
 
 
 
-        return (
+    return (
 
-            <div>
-                {this.state.retPosts}
+        <div>
+            {props.retPosts}
 
-            </div>
+        </div>
 
 
-        );
+    );
+
+
+
 
 }
+export default Feed
 
 
 
