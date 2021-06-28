@@ -3,7 +3,7 @@ import Login from "./components/LoginPage";
 import SignUp from "./components/SignUp";
 import EditAccount from "./components/EditAccount";
 import Feed from "./components/Feed";
-import Post from "./components/Post";
+import Post from "./components/NewPost";
 
 export const Routes = (props) => {
     return (
@@ -27,9 +27,9 @@ export const Routes = (props) => {
 
             <Route path="/edit-account" component={() => <EditAccount setUser={props.setUser} user={props.user}/>}/>
 
-            <Route path="/feed" component={() => <Feed setUser={props.setUser} user={props.user}/>} />
+            <Route path="/feed" component={() => <Feed setUser={props.setUser} user={props.user} firstname = {props.firstname}/>} />
 
-            <Route path="/post" component={() => <Post setUser={props.setUser} user={props.user}/>} />
+            <Route path="/newPost" component={() => <Post setUser={props.setUser} user={props.user} />} />
 
         </Switch>
     )

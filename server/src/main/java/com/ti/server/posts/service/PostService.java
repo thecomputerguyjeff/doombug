@@ -3,6 +3,7 @@ package com.ti.server.posts.service;
 import com.ti.server.posts.entity.PostEntity;
 import com.ti.server.posts.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.TimeZone;
 
 @Service
 @RequiredArgsConstructor
+
 public class PostService
 {
     private final PostRepository postRepository;

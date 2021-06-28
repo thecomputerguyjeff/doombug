@@ -57,7 +57,7 @@ body, html, .App, #root, .outer {
     margin-bottom: 60px;
 }
 
-.routes {
+.container {
     width: 600px;
     background-color: #ffffff;
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -95,4 +95,17 @@ body, html, .App, #root, .outer {
 .forgot-password a {
     color: #167bff;
 }
-
+.nav-element{
+    font-size: x-large;
+    letter-spacing: 1px;
+margin-left: 40px;
+}
+.feed-container {
+    width: 1200px;
+    background-color: #ffffff;
+    box-shadow: 0px 14px 50px rgba(34, 35, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+    margin: auto auto 30px;
+}

@@ -10,8 +10,8 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/api/v1")
 @CrossOrigin(originPatterns = {"*localhost*", "/"})
-@RequestMapping("/api/v1/posts")
 public class PostController
 {
     private final PostService postService;

@@ -12,6 +12,7 @@ export default class Login extends Component {
             password: "",
             renderAlert: false,
             reloginPrompt: false,
+
         };
         this.props.setToggleLogInSignUp(false)
 
@@ -72,6 +73,7 @@ export default class Login extends Component {
 
     render() {
         return (
+            <div className={"container"}>
 
             <form>
 
@@ -110,6 +112,7 @@ export default class Login extends Component {
                     Forgot <a href="#">password?</a>
                 </p>
             </form>
+            </div>
         );
     }
 }

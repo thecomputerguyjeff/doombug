@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import {post} from "../helper/Fetch";
 import {Redirect} from "react-router-dom";
 
-export default class Post extends Component {
+export default class NewPost extends Component {
 
     constructor(props) {
         super(props);
         const username = this.props.username;
-        const firstname = this.props.firstname;
+        const firstname = this.props.firstName;
         this.state = {
             redirect: false,
             title: "",
@@ -25,12 +25,10 @@ export default class Post extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const title = this.state.title.trim();
-        const content = this.state.content.trim();
 
 
 
-        if (title.localeCompare("") === 0 || content.localeCompare("") === 0) {
+        if (this.state.title.localeCompare("") === 0 || this.state.content.localeCompare("") === 0) {
 
         } else {
             post("api/v1/saveNewPost", {

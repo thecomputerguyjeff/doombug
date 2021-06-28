@@ -3,6 +3,7 @@
 }
 
 .LogoWhenLoggedIn {
+
     font-size: x-large;
     letter-spacing: 1px;
 }
@@ -17,11 +18,7 @@
     letter-spacing: 1px;
     font-size: 2.5vw;
 }
-
-.editAccountLink:hover {
-    text-decoration: none;
+.addPost{
+    margin-right: 40px;
 }
 
-.dropDownItem:active {
-    background-color: white;
-}

@@ -79,6 +79,7 @@ export default class EditAccount extends Component {
     render() {
 
         return (
+            <div className={"container"}>
             <Form className="edit-account">
                 {this.state.renderAlert && <Alert color="danger">
                     Error! All fields must be filled in correctly
@@ -139,6 +140,7 @@ export default class EditAccount extends Component {
                 <Button className="edit-account__button" size="lg" onClick={this.handleCloseButton}> Close </Button>
 
             </Form>
+            </div>
         )
     }
 }

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Head.css';
+
 import {
     Button,
     Collapse,
@@ -15,24 +16,34 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 
 
 const Head = (props) => {
+
     let history = useHistory();
     const handleLogout = () => {
         props.setUser('');
         localStorage.clear();
-
+        window.location.href="/sign-in";
     };
+    const renderRedirect = () => {
+        if(props.redirect){
+            return <Redirect to='/newPost' />
+
+        }
+
+    }
+
+
 
     return (
 
         <div>
 
-            <Navbar color="light" light expand="md">
-                {props.isLoggedIn && <span className="LogoWhenLoggedIn">D</span>}
+            <Navbar color="light" light expand="md" >
+                {props.isLoggedIn && <span className={'nav-element'}  >D</span>}
                 {props.isLoggedIn && <span><img
                     src="bug4.jpg"
                     width="40"
@@ -46,44 +57,47 @@ const Head = (props) => {
                     width="40"
                     height="40"
                 />
-                </span>}
+                        </span>}
                 {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
+
+
                 <Nav className="mr-auto" navbar>
+
+
                 </Nav>
+
+
+                {props.isLoggedIn && <Button  className={"addPost"}type="submit" onClick={()=> props.setRedirect(true)} >
+                    Post +
+                </Button>}
+                {renderRedirect()}
                 {!props.isLoggedIn && props.toggleLogInSignUp &&
                 <Button onClick={() => history.push("/sign-in")}>Sign in</Button>}
                 {!props.isLoggedIn && !props.toggleLogInSignUp &&
                 <Button onClick={() => history.push("/sign-up")}>Sign up</Button>}
 
-
-                {props.isLoggedIn && <UncontrolledDropdown>
+                {props.isLoggedIn && <UncontrolledDropdown >
 
                     <DropdownToggle caret size={"md"}>
                         {props.user.firstName}'s Account
                     </DropdownToggle>
 
                     <DropdownMenu right>
-                        <DropdownItem className="dropDownItem">
-                            <Link className="editAccountLink" to={{
-                                pathname: "/edit-account",
-                                state: {user: props.user}
-                            }}>
-
-                                Edit Account
-                            </Link>
+                        <DropdownItem onClick={()=>window.location.href="/edit-account"}>
+                            Edit Account
                         </DropdownItem>
-                        <DropdownItem className="dropDownItem">
-                            <Link className="editAccountLink" onClick={handleLogout} to={{
-                                pathname: "/sign-in"
-                            }}>
-
-                                Log Out
-                            </Link>
+                        <DropdownItem onClick={handleLogout}>
+                            Log Out
                         </DropdownItem>
 
                     </DropdownMenu>
                 </UncontrolledDropdown>}
+
+
+
+
             </Navbar>
+
         </div>
     );
 }
