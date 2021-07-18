@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -25,12 +27,20 @@ public class PostService
 
         try {
 
-            TimeZone timeZone = TimeZone.getTimeZone("UTC");
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-            dateFormat.setTimeZone(timeZone);
-            String createDate = dateFormat.format(new Date());
+//            TimeZone timeZone = TimeZone.getTimeZone("UTC");
+//            //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+//            DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy" );
+//            dateFormat.setTimeZone(timeZone);
+//            String createDate = dateFormat.format(new Date());
+            LocalDateTime myDateObj = LocalDateTime.now();
 
-            postEntity.setCreateDate(createDate);
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy" + "\n" + " h:mm a");
+            String createDate = dateFormat.format(myDateObj);
+
+            String formattedDate = myDateObj.format(dateFormat);
+            System.out.println("After formatting: " + formattedDate);
+
+            postEntity.setCreateDate(formattedDate);
             postRepository.save(postEntity);
 
             return new ResponseEntity<>("Post has successfully been saved to the database.", HttpStatus.CREATED);
@@ -42,5 +52,6 @@ public class PostService
 
     public List<PostEntity> getAllPosts() {
         return postRepository.getPostEntitiesByOrderByCreateDateDesc();
+                //.subList(1, postRepository.getPostEntitiesByOrderByCreateDateDesc().size());
     }
 }

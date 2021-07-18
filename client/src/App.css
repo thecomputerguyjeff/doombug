@@ -101,9 +101,105 @@ body, html, .App, #root, .outer {
 margin-left: 40px;
 }
 .feed-container {
-    width: 1200px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.post-container{
+    width: 1000px;
+
     background-color: #ffffff;
-    box-shadow: 0px 14px 50px rgba(34, 35, 58, 0.2);
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+    margin: auto auto 30px;
+}
+.new-post-buttons{
+
+   float: right;
+}
+#header-search {
+    margin-right: 5px;
+}
+
+.search-button {
+    color: white;
+    border: none;
+    height: 30px;
+    vertical-align: center;
+    text-align: center;
+    background-color: rgb(65, 61, 65);
+    border-radius: 3px;
+}
+
+.author, .time {
+    width: 50%;
+    float: left;
+}
+
+.recent-post-textbox {
+    width: 85%;
+    margin-right: 7px;
+}
+
+.likes-dislikes {
+    width: 10%;
+    font-size: 10px;
+}
+
+.likes, .dislikes, .answers {
+    padding-bottom: 10px;
+}
+
+.recent-post-textbox, .likes-dislikes {
+    float: left;
+}
+
+.question {
+    text-align: left;
+    padding: 8px;
+    height: 200px;
+    width: 100%;
+    border: 0.5px solid rgb(65, 61, 65);
+    border-radius: 5px;
+}
+
+.tags a {
+    color: rgb(65, 61, 65);
+    text-decoration: none;
+    padding: 2px;
+    margin: 7px;
+    background-color: lightskyblue;
+    border-radius: 1px;
+}
+
+.tags a:hover {
+    color: lightskyblue;
+    background-color: rgb(65, 61, 65);
+}
+
+.btn btn-dark btn-block {
+    width: 20px;
+}
+
+.reply-button, .share-button {
+    width: 50%;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.reply-button {
+    padding-right: 5px;
+}
+
+.share-button {
+    padding-left: 5px;
+}
+.reply-container{
+    width: 600px;
+height: 400px;
+    background-color: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
     padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;

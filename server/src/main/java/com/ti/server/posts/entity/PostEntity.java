@@ -21,7 +21,7 @@ public class PostEntity
     private String id;
     private String title;
     private String content;
-    private PostAuthor author;
+    private String author;
     private ArrayList<PostEntity> replies;
     private ArrayList<PostAuthor> likes;
     private ArrayList<PostAuthor> dislikes;
