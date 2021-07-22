@@ -6,20 +6,28 @@
 
     font-size: x-large;
     letter-spacing: 1px;
+    color: darkblue;
+    font-weight: 5;
 }
 
 .LogoWhenLoggedOut-FirstPart {
     margin-left: 42vw;
     letter-spacing: 1px;
     font-size: 2.5vw;
+    color: darkblue;
+    font-weight: 5;
 }
 
 .LogoWhenLoggedOut-SecondPart {
     letter-spacing: 1px;
     font-size: 2.5vw;
+    color: darkblue;
+    font-weight: 5;
 }
 .addPost{
-    margin-right: 40px;
+    margin-right: 20px;
+    margin-left: 22px;
+    width: 70px;
 }
 .nav{
 

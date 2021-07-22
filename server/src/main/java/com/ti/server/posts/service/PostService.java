@@ -1,27 +1,42 @@
 package com.ti.server.posts.service;
 
+import com.ti.server.login.converter.UserEntityToLoginResponseConverter;
+import com.ti.server.posts.converter.PostEntityToGetPostResponseConverter;
 import com.ti.server.posts.entity.PostEntity;
+import com.ti.server.posts.model.PostRequest;
 import com.ti.server.posts.repository.PostRepository;
+import com.ti.server.user.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.Collections;
 import java.util.List;
-import java.util.TimeZone;
+
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Service
 @RequiredArgsConstructor
 
-public class PostService
-{
+public class PostService {
     private final PostRepository postRepository;
+    private final PostService2 postService2;
+    private final PostEntityToGetPostResponseConverter converter;
+
+
+
+    public ResponseEntity<Object> getPostY(PostRequest postRequest) {
+        try {
+            return new ResponseEntity<>(converter.convert(postService2.getPost(postRequest.getId())), OK);
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(Collections.singletonMap("Error", "Invalid Credentials"), UNAUTHORIZED);
+        }
+    }
 
     public ResponseEntity<String> saveNewPost(PostEntity postEntity) {
 
@@ -52,6 +67,8 @@ public class PostService
 
     public List<PostEntity> getAllPosts() {
         return postRepository.getPostEntitiesByOrderByCreateDateDesc();
-                //.subList(1, postRepository.getPostEntitiesByOrderByCreateDateDesc().size());
+        //.subList(1, postRepository.getPostEntitiesByOrderByCreateDateDesc().size());
     }
+
+
 }

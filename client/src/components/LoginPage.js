@@ -67,7 +67,7 @@ export default class Login extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/feed' />
+            return <Redirect to='/try5' />
         }
     }
 

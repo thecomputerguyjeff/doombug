@@ -1,49 +1,96 @@
 import React, {Component, useEffect, useState} from "react";
-import {post} from "../helper/Fetch";
+import {get, post} from "../helper/Fetch";
 import {Redirect} from "react-router-dom";
 import {Button, Card} from "reactstrap";
 import './Feed.css';
-import logo2 from '../';
+import logo2 from './Thumbs_Down_Sign_Emoji_Icon_ios10_large.png';
 import logo from '../thumbs-up-emoji-png-1.jpg'; // relative path to image
 
 let content = "";
 let rContent="";
+let id = "";
+let postcontent = "";
+let author = "";
 class Replies extends Component{
 
 constructor(props){
     super(props);
     this.state = {
         renderBox: false,
-
 //use app props to pass info
-
+        id: window.location.href.substring(window.location.href.lastIndexOf('/') + 1),
+        postcontent : this.props.location ? this.props.location.state.content : null,
+        date :this.props.location ? this.props.location.state.createDate : null,
+        author :this.props.location ? this.props.location.state.username : null,
+        post: ""
     };
-    console.log(this.props)
+    this._isMounted = false;
+    this.getRandomUsers = this.getRandomUsers.bind(this);
+    console.log(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
+id = this.props.location ? this.props.location.state.id : null;
 
 }
+    async getRandomUsers(id) {
+        if (this._isMounted) {
+            const res = await post("api/v1/getPost", id);
+            const data = await res.json();
+            return data;
+        }
+    }
+    async componentDidMount() {
+        this._isMounted = true;
+        if (this._isMounted){
+            const post = await this.getRandomUsers(this.state.id);
+            let array = post.replies;
 
+            console.log("bla", array);
 
+            this._isMounted && this.setState({ post: post });
+        }
+
+    }
+    async componentDidUpdate(prevState, prevProps){
+        if (this._isMounted){
+            const post = await this.getRandomUsers(this.state.id);
+            let array = post.replies;
+
+            console.log("bla", array);
+
+            this._isMounted && this.setState({ post: post });
+        }
+    }
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
     handleContentChange = (e, key) => {
         content = e.target.value;
 
     };
-    handleSaveChanges = () => {
+   async handleSaveChanges () {
 
         // Update changes to database.
 
 
 console.log("boo");
         //if (content === "") {
-
+let array = [];
        // } else {
+       if (!this.state.post.replies){
+           array = [];
+       }
+       else {
+           array = this.state.post.replies;
+       }
 
+       array.push({content: content, author: JSON.parse(localStorage.getItem('user')).firstName});
+console.log(array);
             post("api/v1/saveNewPost", {
-                    id: "60e6281e6d6b5e40fcb93dd7",
-                    replies: [{content: "sdf", author: JSON.parse(localStorage.getItem('user')).firstName}],
-                    content: ";a",
+                    id: this.state.id,
+                    replies: array,
+                    content: this.state.postcontent,
                 title: "bla",
 
-                author: "sdf"
+                author: this.state.author,
                 }
             ).then(res => {
                 // if (res.status === 200)
@@ -56,6 +103,9 @@ console.log("boo");
                 .catch(err => {
 console.log(err)
                 });
+        // const res = await get("api/v1/getPost");
+        // const data = await res.json();
+        // console.log(data);
         //}
 
     };
@@ -83,11 +133,11 @@ render(){
 
 
                     <div className="form-group">
-                        <h6 className="author">Asked by {this.props.match.params.author}</h6>
-                        <h6 className="time">{this.props.match.params.createDate}</h6>
+                        <h6 className="author">Asked by {this.state.author}</h6>
+                        <h6 className="time">{this.state.date}</h6>
                         <br styles="clear:both"/>
                         <div className="recent-post-textbox">
-                            <h6 className="question">{this.props.match.params.id}</h6>
+                            <h6 className="question">{this.state.postcontent}</h6>
                         </div>
                         <div className="likes-dislikes">
                             <div className="likes" id={""}>
@@ -139,7 +189,8 @@ render(){
 
 
 </div>}
-    { <div className={"reply-container"}>
+    { this.state.post.replies?.map((reply, index) => (
+        <div className={"reply-container"}>
 
 
         <div className="post-page">
@@ -156,21 +207,21 @@ render(){
 
 
                 <div className="form-group">
-                    <h6 className="author">Asked by {this.props.author}</h6>
+                    <h6 className="author">Asked by {reply.author}</h6>
                     <h6 className="time">{this.props.createDate}</h6>
                     <br styles="clear:both"/>
                     <div className="recent-post-textbox">
-                        <h6 className="question">{this.props.content}</h6>
+                        <h6 className="question">{reply.content}</h6>
                     </div>
                     <div className="likes-dislikes">
                         <div className="likes" id={""}>
-                            <img src="thumbs-up-emoji-png-1.jpg" alt="thumbs-up" width="40"
+                            <img src={logo} alt="thumbs-up" width="40"
                                  height="40"/>
                             <br styles="clear:both"/>
                             2 Likes
                         </div>
                         <div className="dislikes">
-                            <img src="Thumbs_Down_Sign_Emoji_Icon_ios10_large.png" alt="thumbs-down" width="30"
+                            <img src={logo2} alt="thumbs-down" width="30"
                                  height="30"/>
                             <br styles="clear:both"/>
                             0 Dislikes
@@ -211,7 +262,7 @@ render(){
         </div>
 
 
-    </div>}
+    </div>))}
     {this.state.renderBox && <div className={"container"}>
         {/*{renderRedirect()}*/}
         <div>

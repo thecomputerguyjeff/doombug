@@ -5,6 +5,7 @@ import Head from "./components/Head";
 import {Routes} from "./Routes";
 import Login from "./components/LoginPage";
 import { useRef } from 'react';
+import Side from "./components/Side";
 
 export let tra = "";
 
@@ -37,6 +38,7 @@ export let tra = "";
             <Head isLoggedIn={user !== ''} setUser={setUser} user={user} toggleLogInSignUp={toggleLogInSignUp}
                   setToggleLogInSignUp={setToggleLogInSignUp} redirect={redirect} setRedirect={setRedirect} posts={posts}
             setPosts={setPosts}/>
+            {user!='' && <Side/>}
             <div className="outer">
 
                 <div className="routes">

@@ -2,7 +2,7 @@ import {Route, Switch} from "react-router-dom";
 import Login from "./components/LoginPage";
 import SignUp from "./components/SignUp";
 import EditAccount from "./components/EditAccount";
-import Feed from "./components/Try5";
+import Feed from "./components/Feed";
 import Post from "./components/NewPost";
 import React from "react";
 import NewPost from "./components/NewPost-class";

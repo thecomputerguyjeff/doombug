@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Head.css';
-
+import bug from './bug4.jpg'
 import {
     Button,
     Collapse,
@@ -54,10 +54,10 @@ const Head = (props) => {
 
 
 
-        <Navbar color="light" light expand="md" className={"nav"}>
+        <Navbar color="light" light expand="md" className={"na"}>
             {props.isLoggedIn && <span className={'nav-element'}  >D</span>}
             {props.isLoggedIn && <span><img
-                src="bug4.jpg"
+                src={bug}
                 width="40"
                 height="40"
             /></span>}
@@ -65,18 +65,19 @@ const Head = (props) => {
             {props.isLoggedIn && <span className="LogoWhenLoggedIn">omBug</span>}
             {!props.isLoggedIn && <span className="LogoWhenLoggedOut-FirstPart">D</span>}
             {!props.isLoggedIn && <span><img
-                src="bug4.jpg"
+                src={bug}
                 width="40"
                 height="40"
             />
                         </span>}
             {!props.isLoggedIn && <span className="LogoWhenLoggedOut-SecondPart">omBug</span>}
 
-
+            <input type="text" placeholder='&#xF002;' name="search"className="fa" id="search-bar"/>
             <Nav className="mr-auto" navbar>
 
 
             </Nav>
+
 
 
             {props.isLoggedIn && <Button  className={"addPost"}type="submit" onClick={()=> props.setRedirect(true)} >

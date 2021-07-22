@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class PostEntity
     private String title;
     private String content;
     private String author;
-    private ArrayList<PostEntity> replies;
+    private List replies;
     private ArrayList<PostAuthor> likes;
     private ArrayList<PostAuthor> dislikes;
     private String createDate; // To be created by the server and not passed in from the front end.
